@@ -1,79 +1,195 @@
-# STUDENT-MANAGEMENT-SYSTEM-IN-C-
-Developed a C++ student management system by implementing OOP principles to parse, store, and manage student records, improving data validation and processing efficiency
+# Student Management System in C++
 
-# WGU - C867: Scripting and Programming Applications
+## Overview
 
-SCENARIO
-You are hired as a contractor to help a university migrate an existing student system to a new platform using C++ language. Since the application already exists, its requirements exist as well, and they are outlined in the next section. You are responsible for implementing the part of the system based on these requirements. A list of data is provided as part of these requirements. This part of the system is responsible for reading and manipulating the provided data.
+The Student Management System is a C++ application developed as part of Western Governors University's C867: Scripting and Programming Applications course. The project simulates the migration of an existing university student information system to a new platform by parsing, storing, validating, and managing student records.
 
-You must write a program containing two classes (i.e., Student and Roster). The program will maintain a current roster of students within a given course. Student data for the program include student ID, first name, last name, email address, age, an array of the number of days to complete each course, and degree program. This information can be found in the “studentData Table” below. The program will read a list of five students and use function calls to manipulate data (see part F4 in the requirements below). While parsing the list of data, the program should create student objects. The entire student list will be stored in one array of students called classRosterArray. Specific data-related output will be directed to the console.
+The application demonstrates core Object-Oriented Programming (OOP) concepts, including encapsulation, constructors, accessors and mutators, dynamic memory management, class relationships, and data validation.
 
-The data should be input as follows:
-const string studentData[] = 
-{"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY", "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK", "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE", "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY", "A5,[firstname],[lastname],[emailaddress],[age], [numberofdaystocomplete3courses],SOFTWARE"
+---
 
-REQUIREMENTS
-A.  Modify the “studentData Table” to include your personal information as the last item.
- 
-B.  Create a C++ project in your integrated development environment (IDE) with the following files:
-  •  degree.h
-  •  student.h and student.cpp
-  •  roster.h and roster.cpp
-  •  main.cpp
- 
-Note: There must be a total of six source code files.
- 
-C.  Define an enumerated data type DegreeProgram for the degree programs containing the data type values SECURITY, NETWORK, and SOFTWARE.
- 
-Note: This information should be included in the degree.h file.
- 
-D.  For the Student class, do the following:
-  1.  Create the class Student  in the files student.h and student.cpp, which includes each of the following variables:
-    •  student ID
-    •  first name
-    •   last name
-    •  email address
-    •  age
-    •  array of number of days to complete each course
-    •  degree program
-  2.  Create each of the following functions in the Student class:
-    a.  an accessor (i.e., getter) for each instance variable from part D1
-    b.  a mutator (i.e., setter) for each instance variable from part D1
-    c.  All external access and changes to any instance variables of the Student class must be done using accessor and mutator functions.
-    d.  constructor using all of the input parameters provided in the table
-    e.  print() to print specific student data
- 
-E.  Create a Roster class (roster.cpp) by doing the following:
-  1.  Create an array of pointers, classRosterArray, to hold the data provided in the “studentData Table.”
-  2.  Create a student object for each student in the data table and populate classRosterArray.
-    a.  Parse each set of data identified in the “studentData Table.”
-    b.  Add each student object to classRosterArray.
-  3.  Define the following functions:
-    a.  public void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram)              that sets the instance variables from part D1 and updates the roster.
-    b.  public void remove(string studentID)  that removes students from the roster by student ID. If the student ID does not exist, the function prints an error message indicating that the student         was not found.
-    c. public void printAll() that prints a complete tab-separated list of student data in the provided format: A1 [tab] First Name: John [tab] Last Name: Smith [tab] Age: 20 [tab]daysInCourse:            {35, 40, 55} Degree Program: Security. The printAll() function should loop through all the students in classRosterArray and call the print() function for each student.
-    d.  public void printAverageDaysInCourse(string studentID)  that correctly prints a student’s average number of days in the three courses. The student is identified by the studentID parameter.
-    e.  public void printInvalidEmails() that verifies student email addresses and displays all invalid email addresses to the user.
-        Note: A valid email should include an at sign ('@') and period ('.') and should not include a space (' ').
-    f.  public void printByDegreeProgram(DegreeProgram degreeProgram) that prints out student information for a degree program specified by an enumerated type.
- 
-F.  Demonstrate the program’s required functionality by adding a main() function in main.cpp, which will contain the required function calls to achieve the following results:
-  1.  Print out to the screen, via your application, the course title, the programming language used, your WGU student ID, and your name.
-  2.  Create an instance of the Roster class called classRoster.
-  3.  Add each student to classRoster.
-  4.  Convert the following pseudo code to complete the rest of the  main() function:
-      classRoster.printAll();
-     classRoster.printInvalidEmails();
- 
-//loop through classRosterArray and for each element:
-classRoster.printAverageDaysInCourse(/*current_object's student id*/);
+## Problem Statement
 
-Note: For the current_object's student id, use an accessor (i.e., getter) for the classRosterArray to access the student id.
+A university needed to migrate student data from an existing system into a new platform developed in C++. The system needed to parse student records, store them in memory, validate data quality, and provide administrative functions for managing student information.
 
-classRoster.printByDegreeProgram(SOFTWARE);
-classRoster.remove("A3");
-classRoster.printAll();
-classRoster.remove("A3");
-//expected: the above line should print a message saying such a student with this ID was not found.
+The solution required implementing a Student class and a Roster class to manage student records and perform common operations such as searching, filtering, validation, and reporting.
 
- 5.  Implement the destructor to release the memory that was allocated dynamically in Roster.
+---
+
+## Features
+
+* Parse student data from raw comma-separated strings
+* Store student records using object-oriented design
+* Add and remove students from the roster
+* Validate student email addresses
+* Calculate average days required to complete courses
+* Filter students by degree program
+* Display complete student roster information
+* Dynamically allocate and release memory using pointers and destructors
+
+---
+
+## Technologies Used
+
+* C++
+* Object-Oriented Programming (OOP)
+* Dynamic Memory Allocation
+* Arrays and Pointers
+* Enumerations
+* String Parsing
+* Data Validation
+
+---
+
+## Project Structure
+
+```text
+Student-Management-System/
+│
+├── degree.h
+├── student.h
+├── student.cpp
+├── roster.h
+├── roster.cpp
+└── main.cpp
+```
+
+### degree.h
+
+Defines the DegreeProgram enumeration:
+
+* SECURITY
+* NETWORK
+* SOFTWARE
+
+### Student Class
+
+Responsible for storing individual student information:
+
+* Student ID
+* First Name
+* Last Name
+* Email Address
+* Age
+* Days to Complete Courses
+* Degree Program
+
+Includes:
+
+* Constructors
+* Getters and Setters
+* print() method
+
+### Roster Class
+
+Responsible for managing the collection of students.
+
+Includes functionality to:
+
+* Add students
+* Remove students
+* Print all student records
+* Validate email addresses
+* Calculate average course completion time
+* Filter students by degree program
+
+---
+
+## Key Concepts Demonstrated
+
+### Object-Oriented Programming
+
+* Classes and Objects
+* Encapsulation
+* Constructors
+* Accessor and Mutator Functions
+* Separation of Interface and Implementation
+
+### Memory Management
+
+Student objects are dynamically allocated and stored in an array of pointers.
+
+The Roster destructor releases allocated memory to prevent memory leaks.
+
+### Data Parsing
+
+Student records are parsed from raw string input and converted into structured Student objects.
+
+### Data Validation
+
+Email addresses are validated based on the following rules:
+
+* Must contain "@"
+* Must contain "."
+* Must not contain spaces
+
+Invalid email addresses are identified and displayed.
+
+---
+
+## Example Functionality
+
+### Print All Students
+
+```text
+A1    First Name: John    Last Name: Smith
+Age: 20
+Days In Course: {30,35,40}
+Degree Program: SECURITY
+```
+
+### Print Invalid Emails
+
+```text
+Erickson_1990@gmailcom
+The_lawyer99yahoo.com
+```
+
+### Print Average Days in Course
+
+```text
+A1: 35
+A2: 40
+A3: 31
+```
+
+### Filter by Degree Program
+
+```text
+SOFTWARE Students:
+A3
+A5
+```
+
+---
+
+## What I Learned
+
+Through this project I strengthened my understanding of:
+
+* Object-oriented software design
+* Working with header and implementation files
+* Dynamic memory allocation and destructors
+* String manipulation and parsing
+* Data validation techniques
+* Debugging C++ applications
+
+This project helped build a strong foundation in C++ development and reinforced best practices for designing maintainable software systems.
+
+---
+
+## Future Enhancements
+
+* Replace arrays with STL containers such as vector
+* Implement file-based data storage
+* Add search functionality
+* Build a command-line menu interface
+* Add unit tests using a C++ testing framework
+* Store student data in a database
+
+---
+
+## Console Output
+
+<img width="1172" height="561" alt="Screenshot 2026-06-12 at 22 47 29" src="https://github.com/user-attachments/assets/77e80e79-8bb4-4d86-8801-6fc1c2118c38" />
+
